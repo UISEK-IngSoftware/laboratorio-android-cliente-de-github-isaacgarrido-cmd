@@ -18,9 +18,13 @@
 
     <Button
         android:id="@+id/add_project_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Agregar Nuevo Proyecto"
-        android:layout_margin="16dp" />
+        android:layout_width="62dp"
+        android:layout_height="62dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/circle_button"
+        android:gravity="center"
+        android:text="+"
+        android:textColor="@color/white"
+        android:textSize="24sp" />
 
 </LinearLayout>

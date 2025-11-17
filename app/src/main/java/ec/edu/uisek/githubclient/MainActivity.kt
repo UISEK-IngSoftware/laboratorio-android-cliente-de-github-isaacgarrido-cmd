@@ -15,11 +15,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RepositoryAdapter
     private val repositories = mutableListOf(
-        Repository("Android App", "A sample Android application", "elGuapo1", 150),
-        Repository("Kotlin Utils", "Utility functions for Kotlin", "Loquinloquero", 89),
-        Repository("UI Components", "Reusable UI components", "Isaac", 234),
-        Repository("Data Structures", "Implementation of common data structures", "Garrido", 67),
-        Repository("Networking Library", "HTTP client library", "ElFLaKo", 312)
+        Repository("Android App", "A sample Android application", "elGuapo1", 150, "https://via.placeholder.com/48x48.png?text=E"),
+        Repository("Kotlin Utils", "Utility functions for Kotlin", "Loquinloquero", 89, "https://via.placeholder.com/48x48.png?text=L"),
+        Repository("UI Components", "Reusable UI components", "Isaac", 234, "https://via.placeholder.com/48x48.png?text=I"),
+        Repository("Data Structures", "Implementation of common data structures", "Garrido", 67, "https://via.placeholder.com/48x48.png?text=G"),
+        Repository("Networking Library", "HTTP client library", "ElFLaKo", 312, "https://via.placeholder.com/48x48.png?text=F")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {

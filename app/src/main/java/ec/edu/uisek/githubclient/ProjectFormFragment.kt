@@ -32,7 +32,7 @@ class ProjectFormFragment : Fragment() {
 
             if (name.isNotEmpty() && description.isNotEmpty()) {
                 // Create new repository and add to the list (temporarily)
-                val newRepository = Repository(name, description, "Usuario Actual", 0)
+                val newRepository = Repository(name, description, "Usuario Actual", 0, "https://via.placeholder.com/48x48.png?text=U")
 
                 // Get the main activity and update the repository list
                 val mainActivity = requireActivity() as MainActivity
