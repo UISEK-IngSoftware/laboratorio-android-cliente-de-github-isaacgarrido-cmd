@@ -3,61 +3,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@android:color/white">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Crear Nuevo Proyecto"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_height="232dp"
         android:layout_marginBottom="24dp"
-        android:gravity="center" />
+        android:gravity="center"
+        android:text="Crear Nuevo Repositorio"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nombre del Proyecto"
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp" />
+
 
     <EditText
         android:id="@+id/project_name_edit_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese el nombre del proyecto"
+        android:hint="Ingrese el nombre del repositorio"
         android:inputType="text"
         android:layout_marginBottom="16dp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Descripción del Proyecto"
-        android:textSize="16sp"
-        android:layout_marginBottom="8dp" />
 
     <EditText
         android:id="@+id/project_description_edit_text"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Ingrese la descripción del proyecto"
-        android:inputType="textMultiLine"
-        android:minLines="3"
+        android:layout_height="51dp"
+        android:layout_marginBottom="16dp"
         android:gravity="top"
-        android:layout_marginBottom="24dp" />
+        android:hint="Ingrese la descripción del repositorio"
+        android:inputType="textMultiLine"
+        android:minLines="3" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/save_project_button"
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="Guardar Proyecto" />
+            android:text="Guardar" />
 
         <Button
             android:id="@+id/cancel_button"

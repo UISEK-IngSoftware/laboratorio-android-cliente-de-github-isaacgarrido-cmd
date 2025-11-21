@@ -11,6 +11,20 @@ import androidx.fragment.app.Fragment
 
 class ProjectFormFragment : Fragment() {
 
+    private var repository: Repository? = null
+    private var position: Int = -1
+
+    companion object {
+        fun newInstance(repository: Repository? = null, position: Int = -1): ProjectFormFragment {
+            val fragment = ProjectFormFragment()
+            val args = Bundle()
+            args.putParcelable("repository", repository)
+            args.putInt("position", position)
+            fragment.arguments = args
+            return fragment
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -21,24 +35,37 @@ class ProjectFormFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        repository = arguments?.getParcelable("repository")
+        position = arguments?.getInt("position", -1) ?: -1
+
         val projectNameEditText: EditText = view.findViewById(R.id.project_name_edit_text)
         val projectDescriptionEditText: EditText = view.findViewById(R.id.project_description_edit_text)
         val saveButton: Button = view.findViewById(R.id.save_project_button)
         val cancelButton: Button = view.findViewById(R.id.cancel_button)
+
+        // Pre-fill fields if editing
+        repository?.let {
+            projectNameEditText.setText(it.name)
+            projectDescriptionEditText.setText(it.description)
+        }
 
         saveButton.setOnClickListener {
             val name = projectNameEditText.text.toString().trim()
             val description = projectDescriptionEditText.text.toString().trim()
 
             if (name.isNotEmpty() && description.isNotEmpty()) {
-                // Create new repository and add to the list (temporarily)
-                val newRepository = Repository(name, description, "Usuario Actual", 0, "https://via.placeholder.com/48x48.png?text=U")
-
-                // Get the main activity and update the repository list
                 val mainActivity = requireActivity() as MainActivity
-                mainActivity.addRepository(newRepository)
-
-                Toast.makeText(requireContext(), "¡Proyecto '$name' guardado exitosamente!", Toast.LENGTH_SHORT).show()
+                if (repository != null && position != -1) {
+                    // Editing existing repository
+                    val updatedRepository = repository!!.copy(name = name, description = description)
+                    mainActivity.updateRepository(position, updatedRepository)
+                    Toast.makeText(requireContext(), "¡Proyecto '$name' actualizado exitosamente!", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Creating new repository
+                    val newRepository = Repository(name, description, "Desconocido", "Usuario Actual", 0, "https://via.placeholder.com/48x48.png?text=U")
+                    mainActivity.addRepository(newRepository)
+                    Toast.makeText(requireContext(), "¡Proyecto '$name' guardado exitosamente!", Toast.LENGTH_SHORT).show()
+                }
                 requireActivity().supportFragmentManager.popBackStack()
             } else {
                 Toast.makeText(requireContext(), "Por favor complete todos los campos", Toast.LENGTH_SHORT).show()
