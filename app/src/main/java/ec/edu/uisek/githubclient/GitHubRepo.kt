@@ -1,3 +1,84 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 package ec.edu.uisek.githubclient
 
 data class GitHubRepo(
@@ -15,4 +96,16 @@ data class Owner(
 
 data class SearchResponse(
     val items: List<GitHubRepo>
+)
+
+data class CreateRepoRequest(
+    val name: String,
+    val description: String? = null,
+    val private: Boolean = false
+)
+
+data class UpdateRepoRequest(
+    val name: String? = null,
+    val description: String? = null,
+    val private: Boolean? = null
 )

@@ -57,14 +57,10 @@ class ProjectFormFragment : Fragment() {
                 val mainActivity = requireActivity() as MainActivity
                 if (repository != null && position != -1) {
                     // Editing existing repository
-                    val updatedRepository = repository!!.copy(name = name, description = description)
-                    mainActivity.updateRepository(position, updatedRepository)
-                    Toast.makeText(requireContext(), "¡Proyecto '$name' actualizado exitosamente!", Toast.LENGTH_SHORT).show()
+                    mainActivity.updateRepositoryApi(repository!!.owner, repository!!.name, name, description)
                 } else {
                     // Creating new repository
-                    val newRepository = Repository(name, description, "Desconocido", "Usuario Actual", 0, "https://via.placeholder.com/48x48.png?text=U")
-                    mainActivity.addRepository(newRepository)
-                    Toast.makeText(requireContext(), "¡Proyecto '$name' guardado exitosamente!", Toast.LENGTH_SHORT).show()
+                    mainActivity.createRepository(name, description)
                 }
                 requireActivity().supportFragmentManager.popBackStack()
             } else {

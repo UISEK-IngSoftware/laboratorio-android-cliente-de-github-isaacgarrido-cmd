@@ -3,11 +3,11 @@ package ec.edu.uisek.githubclient
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class RepositoryAdapter(
     private val repositories: List<Repository>,
@@ -22,8 +22,8 @@ class RepositoryAdapter(
         val ownerTextView: TextView = itemView.findViewById(R.id.repository_owner)
         val languageTextView: TextView = itemView.findViewById(R.id.repository_language)
         val starsTextView: TextView = itemView.findViewById(R.id.repository_stars)
-        val editFab: FloatingActionButton = itemView.findViewById(R.id.edit_fab)
-        val deleteFab: FloatingActionButton = itemView.findViewById(R.id.delete_fab)
+        val editButton: ImageButton = itemView.findViewById(R.id.edit_button)
+        val deleteButton: ImageButton = itemView.findViewById(R.id.delete_button)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryViewHolder {
@@ -44,8 +44,8 @@ class RepositoryAdapter(
         holder.languageTextView.text = repository.language
         holder.starsTextView.text = repository.stars.toString()
 
-        holder.editFab.setOnClickListener { onEdit(position) }
-        holder.deleteFab.setOnClickListener { onDelete(position) }
+        holder.editButton.setOnClickListener { onEdit(position) }
+        holder.deleteButton.setOnClickListener { onDelete(position) }
     }
 
     override fun getItemCount(): Int = repositories.size
